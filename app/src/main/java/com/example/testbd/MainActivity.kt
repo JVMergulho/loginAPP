@@ -24,9 +24,22 @@ class MainActivity : AppCompatActivity() {
         database = Room.databaseBuilder(applicationContext,
             RoomDB_login::class.java,
             "loginDB").build()
+
+//        CorotineScope(Dispatchers.IO).launch{
+//
+//        }
+
     }
 
     suspend fun InsertLogin(login: RoomEntity_login){
         database.loginDao().insert(login)
+    }
+
+    suspend fun GetUserByUsername(username: String): RoomEntity_login{
+        return database.loginDao().getByUsername(username)
+    }
+
+    suspend fun UpdateLogin(username: String, newPass: String): RoomEntity_login{
+        database.loginDao().updatePassword(username, newPass)
     }
 }
