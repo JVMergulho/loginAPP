@@ -9,5 +9,5 @@ data class RoomEntity_login(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     @ColumnInfo(name = "username") val username: String,
     @ColumnInfo(name = "pwd") val pwd: String,
-    @ColumnInfo(name = "remember") val remember: String
+    @ColumnInfo(name = "remember") val remember: Boolean
 )
